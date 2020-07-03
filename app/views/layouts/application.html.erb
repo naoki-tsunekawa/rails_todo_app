@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <div class="app-title navbar navbar-expand-md nav-bar-light bg-light">
+      <div class="navbar-brand">
+        To-Dos
+      </div>
+    </div>
+    <%# flashメッセージがあれば出力 %>
+    <div class="container">
+      <% if flash[:notice]%>
+        <div class="alert alert-success">
+          <%=flash[:notice]%>
+        </div>
+      <%end%>
+    </div>
     <%= yield %>
   </body>
 </html>
