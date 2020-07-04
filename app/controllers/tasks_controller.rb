@@ -9,7 +9,6 @@ class TasksController < ApplicationController
   def show
     # findメソッドを使用してタスク詳細を表示する為に必要なオブジェクトを取得する
     @task = Task.find(params[:id])
-
   end
 
   # ====タスク新規登録====
@@ -39,6 +38,16 @@ class TasksController < ApplicationController
     task.update!(task_param)
     # Flashメッセージを設定
     redirect_to tasks_url, notice: "タスク「#{task.name}」を更新しました。"
+  end
+
+  # ====タスク削除====
+  def destroy
+    # DBから該当するデータを検索し、オブジェクトを生成
+    task = Task.find(params[:id])
+    # データ削除
+    task.destroy
+    # Flashメッセージを設定
+    redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
   end
 
   private
