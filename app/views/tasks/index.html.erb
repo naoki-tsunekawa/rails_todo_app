@@ -7,12 +7,14 @@
             <tr>
                 <th><%=Task.human_attribute_name(:name)%></th>
                 <th><%=Task.human_attribute_name(:created_at)%></th>
+                <th></th>
             </tr>
             <tbody>
                 <%@tasks.each do |task|%>
                     <tr>
-                        <td><%=task.name%></td>
+                        <td><%=link_to task.name, task%></td>
                         <td><%=task.created_at%></td>
+                        <td><%=link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'%></td>
                     </tr>
                 <%end%>
             </tbody>

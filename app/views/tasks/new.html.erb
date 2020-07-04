@@ -1,22 +1,9 @@
 
 <h1>タスクの新規登録</h1>
 
-<div class="nav">
-    <div class="justify-content-end">
-        <%=link_to '一覧', tasks_path, class: 'navbar-brand'%>
-    </div>
-    
+<div class="nav justify-content-end">
+    <%=link_to 'back page', tasks_path, class: 'navbar-brand'%>
 </div>
 
-<%=form_with model:@task, local: true do |f|%>
-        <div class="form_group">
-            <%=f.label :name%>
-            <%=f.text_field :name, class: 'form-control', id: 'task_name' %>
-        </div>
-        <div class="form_group">
-            <%=f.label :description%>
-            <%=f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'%>
-        </div>
-        <%=f.submit nil, class: 'btn btn-primary'%>
-<%end%>
+<%=render partial: 'form', locals: {task: @task}%>
 
