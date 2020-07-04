@@ -1,2 +1,21 @@
 <h1>タスク一覧</h1>
  <%= link_to '新規作成', new_task_path, class: 'btn btn-outline-dark' %>
+
+<div class="md-3">
+    <table class="table table-hover">
+        <thead class="thead-default">
+            <tr>
+                <th><%=Task.human_attribute_name(:name)%></th>
+                <th><%=Task.human_attribute_name(:created_at)%></th>
+            </tr>
+            <tbody>
+                <%@tasks.each do |task|%>
+                    <tr>
+                        <td><%=task.name%></td>
+                        <td><%=task.created_at%></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </thead>
+    </table>
+</div>

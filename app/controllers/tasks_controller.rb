@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   def index
+    # DBからデータを全件取得
+    @tasks = Task.all
   end
 
   def show
