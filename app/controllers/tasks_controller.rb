@@ -18,11 +18,17 @@ class TasksController < ApplicationController
 
   def create
     # viewから渡されたパラメータでオブジェクトを生成
-    task = Task.new(task_param)
+    @task = Task.new(task_param)
     # DB保存(create)
-    task.save!
-    # Flashメッセージを設定
-    redirect_to tasks_url, notice: "タスク 「#{task.name}」を登録しました。"
+    if @task.save
+      # Flashメッセージを設定
+      redirect_to tasks_url, notice: "タスク 「#{task.name}」を登録しました。"
+    else
+      # 失敗した場合に再度登録画面を呼び出す
+      render :new
+    end
+    
+    
   end
 
   # ====タスク編集====
