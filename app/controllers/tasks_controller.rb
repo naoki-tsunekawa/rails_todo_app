@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     # DB保存(create)
     if @task.save
       # Flashメッセージを設定
-      redirect_to tasks_url, notice: "タスク 「#{task.name}」を登録しました。"
+      redirect_to tasks_url, notice: "タスク 「#{@task.name}」を登録しました。"
     else
       # 失敗した場合に再度登録画面を呼び出す
       render :new
