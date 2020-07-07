@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     # メールアドレスでユーザを検索する
     user = User.find_by(email: session_params[:email])
-    byebug
     # ユーザが見つかった場合はパスワードによる認証をUserモデルにhas_secure_passwordを記述した時に
     # 自動で追加された"authenticate"メソッドで行う
     if user&.authenticate(session_params[:password])
