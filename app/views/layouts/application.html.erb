@@ -14,7 +14,26 @@
       <div class="navbar-brand">
         To-Dos
       </div>
+      <%# ログアウトの為のナビバーリンク %>
+      <ul class="navbar-nav ml-auto">
+        <%if @current_user%>
+          <li class="nav-item">
+            <%=link_to 'タスク一覧', tasks_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%=link_to 'ユーザ一覧', admin_users_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%=link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'%>
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <%=link_to 'ログイン', login_path, class: 'nav-link'%>
+          </li>  
+        <%end%>
+      </ul>
     </div>
+    
     <%# flashメッセージがあれば出力 %>
     <div class="container">
       <% if flash[:notice]%>
