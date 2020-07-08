@@ -16,7 +16,7 @@
       </div>
       <%# ログアウトの為のナビバーリンク %>
       <ul class="navbar-nav ml-auto">
-        <%if @current_user%>
+        <%if current_user%>
           <li class="nav-item">
             <%=link_to 'タスク一覧', tasks_path, class: 'nav-link'%>
           </li>
