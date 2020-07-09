@@ -17,7 +17,7 @@
         <%# タスクの説明表示 %>
         <tr>
             <th><%=Task.human_attribute_name(:description)%></th>
-            <td><%=simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")%></td>
+            <td><%=auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))%></td>
         </tr>
         <%# タスク作成日時表示 %>
         <tr>
