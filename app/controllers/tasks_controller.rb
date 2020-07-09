@@ -36,6 +36,8 @@ class TasksController < ApplicationController
   end
 
   def update
+    # DBから該当するデータを検索し、オブジェクトを生成
+    @task = current_user.tasks.find(params[:id])
     # DB保存(create)
     @task.update!(task_params)
     # Flashメッセージを設定
