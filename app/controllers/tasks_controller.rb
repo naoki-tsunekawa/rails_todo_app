@@ -1,14 +1,14 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  
   # ====タスク一覧====
   def index
     # ログインしているユーザーに紐づくTaskだけ表示する
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.recent
   end
 
   # ====タスク詳細====
   def show
-    # findメソッドを使用してタスク詳細を表示する為に必要なオブジェクトを取得する
-    @task = current_user.tasks.find(params[:id])
   end
 
   # ====タスク新規登録====
@@ -33,32 +33,33 @@ class TasksController < ApplicationController
 
   # ====タスク編集====
   def edit
-    # DBから該当するデータを検索し、オブジェクトを生成
-    @task = current_user.tasks.find(params[:id])
   end
 
   def update
     # DBから該当するデータを検索し、オブジェクトを生成
-    task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     # DB保存(create)
-    task.update!(task_param)
+    @task.update!(task_params)
     # Flashメッセージを設定
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を更新しました。"
+    redirect_to tasks_url, notice: "タスク「#{@task.name}」を更新しました。"
   end
 
   # ====タスク削除====
   def destroy
-    # DBから該当するデータを検索し、オブジェクトを生成
-    task = current_user.tasks.find(params[:id])
     # データ削除
-    task.destroy
+    @task.destroy
     # Flashメッセージを設定
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
+    redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
   private
 
-  def task_param
+  def set_task
+      # findメソッドを使用してタスク詳細を表示する為に必要なオブジェクトを取得する
+      @task = current_user.tasks.find(params[:id])
+  end
+
+  def task_params
     params.require(:task).permit(:name, :description)
   end
 end

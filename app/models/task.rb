@@ -7,6 +7,8 @@ class Task < ApplicationRecord
     validate :check_name
 
     belongs_to :user
+
+    scope :recent, -> { order(created_at: :desc) }
     
     private
     def check_name
