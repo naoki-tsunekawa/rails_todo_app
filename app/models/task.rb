@@ -6,6 +6,9 @@ class Task < ApplicationRecord
     validates :name, presence: true, length: { maximum:30 }
     validate :check_name
 
+    belongs_to :user
+
+    scope :recent, -> { order(created_at: :desc) }
     
     private
     def check_name

@@ -67,4 +67,6 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 
 # 日本語化対応
-gem 'rails-i18n', '~> 5.1' 
+gem 'rails-i18n', '~> 5.1'
+# rails_autolink(テキストのリンクを自動でリンクに変換してくれる)
+gem 'rails_autolink'
