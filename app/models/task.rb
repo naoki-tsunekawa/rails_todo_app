@@ -6,6 +6,7 @@ class Task < ApplicationRecord
     validates :name, presence: true, length: { maximum:30 }
     validate :check_name
 
+    belongs_to :user
     
     private
     def check_name
