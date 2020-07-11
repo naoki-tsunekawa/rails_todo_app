@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
     # 検証前の値を正規化
-    before_validation :set_nameless_name
+    # before_validation :set_nameless_name
 
     # バリデーション設定
     validates :name, presence: true, length: { maximum:30 }
@@ -17,9 +17,9 @@ class Task < ApplicationRecord
         end
     end
 
-    def set_nameless_name
-        if name.blank?
-            self.name = '名前なし'
-        end
-    end
+    # def set_nameless_name
+    #     if name.blank?
+    #         self.name = '名前なし'
+    #     end
+    # end
 end
