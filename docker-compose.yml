@@ -21,6 +21,6 @@ services:
             - db
             
     db:
-        image: postgres
+        image: postgres:12.2
         volumes: 
             - 'db-data:/var/lib/postgresql/data'

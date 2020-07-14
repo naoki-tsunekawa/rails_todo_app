@@ -20,6 +20,15 @@ class TasksController < ApplicationController
     # viewから渡されたパラメータでオブジェクトを生成
     # user_idを含めた状態でTaskデータを登録する
     @task = current_user.tasks.new(task_params)
+
+    # 確認画面で'戻る'ボタンを押された場合
+    if params[:back].present?
+      # 新規登録画面へ遷移
+      render :new
+      # 処理を終了
+      return
+    end
+
     # DB保存(create)
     if @task.save
       # Flashメッセージを設定
@@ -28,6 +37,12 @@ class TasksController < ApplicationController
       # 失敗した場合に再度登録画面を呼び出す
       render :new
     end
+  end
+
+  # ====タスク登録確認画面====
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
   end
 
   # ====タスク編集====
