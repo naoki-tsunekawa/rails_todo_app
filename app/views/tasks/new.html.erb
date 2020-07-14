@@ -5,5 +5,24 @@
     <%=link_to 'back page', tasks_path, class: 'navbar-brand'%>
 </div>
 
-<%=render partial: 'form', locals: {task: @task}%>
+<%# エラーメッセージ出力 %>
+<%if @task.errors.present?%>
+    <ul id="error_explanation">
+        <%task.errors.full_messages.each do |message|%>
+            <li><%=message%></li>
+        <%end%>
+    </ul>
+<%end%>
 
+<%# フォームの出力 %>
+<%=form_with model: @task, local: true, url: confirm_new_task_path do |f|%>
+  <div class="form-group">
+    <%=f.label :name%>
+    <%=f.text_field :name, class: 'form-control', id: 'task_name'%>
+  </div>
+  <div class="form-group">
+    <%=f.label :description%>
+    <%=f.text_area :description, row: 5, class: 'form-control', id: 'task_description'%>
+  </div>
+  <%=f.submit '確認', class: 'btn btn-primary'%>
+<%end%>
