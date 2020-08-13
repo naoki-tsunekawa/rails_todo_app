@@ -1,24 +1,7 @@
 # README
+Railsの学習のために作成しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+todoアプリケーションです。
 
-Things you may want to cover:
+今後の学習で機能を追加していく予定です。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
